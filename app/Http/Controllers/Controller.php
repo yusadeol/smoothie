@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use CoffeeCode\Router\Router;
@@ -11,7 +13,7 @@ class Controller
 
     public function __construct(protected Router $router)
     {
-        $smarty = new Smarty();
+        $smarty = new Smarty;
         $smarty->setTemplateDir(basePath('/resources/views'));
         $smarty->setCompileDir(basePath('/storage/smarty/compile'));
         $smarty->setCacheDir(basePath('/storage/smarty/cache'));

@@ -17,7 +17,8 @@
         "captainhook/hook-installer": "^1.0",
         "laravel/pint": "^1.22",
         "ramsey/conventional-commits": "^1.6",
-        "rector/rector": "^2.0"
+        "rector/rector": "^2.0",
+        "phpstan/phpstan": "^2.1"
     },
     "autoload": {
         "psr-4": {

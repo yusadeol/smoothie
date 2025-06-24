@@ -1,14 +1,14 @@
 <?php
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 
 use CoffeeCode\Router\Dispatch;
 use CoffeeCode\Router\Router;
 
 $router = new Router('http://localhost/smoothie');
 
-$frameworkRoutes = require_once  __DIR__ . '/routes/framework.php';
-$webRoutes = require_once  __DIR__ . '/routes/web.php';
+$frameworkRoutes = require_once __DIR__.'/routes/framework.php';
+$webRoutes = require_once __DIR__.'/routes/web.php';
 
 $frameworkRoutes($router);
 $webRoutes($router);
@@ -17,15 +17,15 @@ $router->dispatch();
 
 switch ($router->error()) {
     case Dispatch::BAD_REQUEST:
-        $router->redirect("badRequest");
+        $router->redirect('badRequest');
         break;
     case Dispatch::NOT_FOUND:
-        $router->redirect("notFound");
+        $router->redirect('notFound');
         break;
     case Dispatch::METHOD_NOT_ALLOWED:
-        $router->redirect("methodNotAllowed");
+        $router->redirect('methodNotAllowed');
         break;
     case Dispatch::NOT_IMPLEMENTED:
-        $router->redirect("notImplemented");
+        $router->redirect('notImplemented');
         break;
 }
