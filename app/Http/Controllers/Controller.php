@@ -18,6 +18,8 @@ class Controller
         $smarty->setCompileDir(basePath('/storage/smarty/compile'));
         $smarty->setCacheDir(basePath('/storage/smarty/cache'));
 
+        $smarty->setEscapeHtml(true);
+
         $this->smarty = $smarty;
     }
 }
