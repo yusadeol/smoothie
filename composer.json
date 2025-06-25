@@ -10,7 +10,8 @@
     "require": {
         "php": "^8.4",
         "coffeecode/router": "^2.0",
-        "smarty/smarty": "^5.5"
+        "smarty/smarty": "^5.5",
+        "robmorgan/phinx": "^0.16.9"
     },
     "require-dev": {
         "captainhook/captainhook": "^5.25",
