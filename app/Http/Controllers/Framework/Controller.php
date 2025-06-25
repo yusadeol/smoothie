@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Framework;
 
 use CoffeeCode\Router\Router;
 use Smarty\Smarty;
@@ -14,9 +14,9 @@ class Controller
     public function __construct(protected Router $router)
     {
         $smarty = new Smarty;
-        $smarty->setTemplateDir(basePath('/resources/views'));
-        $smarty->setCompileDir(basePath('/storage/smarty/compile'));
-        $smarty->setCacheDir(basePath('/storage/smarty/cache'));
+        $smarty->setTemplateDir(basePath('resources/views'));
+        $smarty->setCompileDir(basePath('storage/smarty/compile'));
+        $smarty->setCacheDir(basePath('storage/smarty/cache'));
 
         $smarty->setEscapeHtml(true);
 

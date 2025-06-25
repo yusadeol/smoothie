@@ -9,5 +9,5 @@ function basePath(?string $path = null): string
         return $basePath;
     }
 
-    return $basePath.$path;
+    return $basePath.'/'.$path;
 }

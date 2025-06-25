@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Framework;
 
 class NotFoundController extends Controller
 {
     public function __invoke(): void
     {
-        echo 'error 404';
+        $this->smarty->display('framework/notFound.tpl');
     }
 }
