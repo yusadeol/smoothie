@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Source\Domain\VO;
 
 use InvalidArgumentException;
+use Stringable;
 
-final readonly class Name implements \Stringable
+final readonly class Name implements Stringable
 {
     public function __construct(private string $value) {}
 

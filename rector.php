@@ -15,6 +15,7 @@ return RectorConfig::configure()
     ->withRules([
         DeclareStrictTypesRector::class,
     ])
+    ->withImportNames()
     ->withPreparedSets(
         deadCode: true,
         codeQuality: true,
