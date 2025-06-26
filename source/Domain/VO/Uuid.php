@@ -4,28 +4,28 @@ declare(strict_types=1);
 
 namespace Source\Domain\VO;
 
-use InvalidArgumentException;
+use Source\Domain\VO\Traits\Validatable;
 use Stringable;
 
 final readonly class Uuid implements Stringable
 {
+    use Validatable;
+
     public function __construct(private string $value) {}
 
-    public static function parse(string $value): self
+    private static function validate(string $value): true|Error
     {
-        if (! self::isValid($value)) {
-            throw new InvalidArgumentException('Invalid UUID format.');
+        $length = mb_strlen($value);
+        if ($length < 4 || $length > 255) {
+            return Error::parse('UUID must be between 4 and 255 characters.');
         }
 
-        return new self($value);
-    }
+        $pattern = '/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
+        if (preg_match($pattern, $value) !== 1) {
+            return Error::parse('Invalid UUID format.');
+        }
 
-    public static function isValid(string $value): bool
-    {
-        return preg_match(
-            '/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i',
-            $value
-        ) === 1;
+        return true;
     }
 
     public function __toString(): string

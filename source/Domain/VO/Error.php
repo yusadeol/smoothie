@@ -4,23 +4,21 @@ declare(strict_types=1);
 
 namespace Source\Domain\VO;
 
-use Source\Domain\VO\Traits\Validatable;
+use InvalidArgumentException;
 use Stringable;
 
-final readonly class Name implements Stringable
+final readonly class Error implements Stringable
 {
-    use Validatable;
-
     public function __construct(private string $value) {}
 
-    private static function validate(string $value): true|Error
+    public static function parse(string $value): self
     {
         $length = mb_strlen($value);
         if ($length < 4 || $length > 255) {
-            return Error::parse('Name must be between 4 and 255 characters.');
+            throw new InvalidArgumentException('Error must be between 4 and 255 characters.');
         }
 
-        return true;
+        return new self($value);
     }
 
     public function __toString(): string

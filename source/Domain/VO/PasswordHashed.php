@@ -7,7 +7,7 @@ namespace Source\Domain\VO;
 use Source\Domain\VO\Traits\Validatable;
 use Stringable;
 
-final readonly class Slug implements Stringable
+final readonly class PasswordHashed implements Stringable
 {
     use Validatable;
 
@@ -17,14 +17,19 @@ final readonly class Slug implements Stringable
     {
         $length = mb_strlen($value);
         if ($length < 4 || $length > 255) {
-            return Error::parse('Slug must be between 4 and 255 characters.');
+            return Error::parse('Password must be between 4 and 255 characters.');
         }
 
-        if (preg_match('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', $value) !== 1) {
-            return Error::parse('Invalid slug format.');
+        if (mb_strlen($value) < 60 || preg_match('/^\$2[ayb]\$.{56}$/', $value) !== 1) {
+            return Error::parse('Invalid password hash format.');
         }
 
         return true;
+    }
+
+    public function verify(Password $plain): bool
+    {
+        return password_verify((string) $plain, $this->value);
     }
 
     public function __toString(): string

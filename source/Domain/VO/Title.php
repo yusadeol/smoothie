@@ -4,25 +4,23 @@ declare(strict_types=1);
 
 namespace Source\Domain\VO;
 
-use InvalidArgumentException;
+use Source\Domain\VO\Traits\Validatable;
 use Stringable;
 
 final readonly class Title implements Stringable
 {
+    use Validatable;
+
     public function __construct(private string $value) {}
 
-    public static function parse(string $value): self
+    private static function validate(string $value): true|Error
     {
-        if (! self::isValid($value)) {
-            throw new InvalidArgumentException('Title must have at least 3 characters.');
+        $length = mb_strlen($value);
+        if ($length < 4 || $length > 255) {
+            return Error::parse('Title must be between 4 and 255 characters.');
         }
 
-        return new self($value);
-    }
-
-    public static function isValid(string $value): bool
-    {
-        return strlen($value) >= 3;
+        return true;
     }
 
     public function __toString(): string

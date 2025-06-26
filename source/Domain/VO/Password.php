@@ -4,25 +4,30 @@ declare(strict_types=1);
 
 namespace Source\Domain\VO;
 
-use InvalidArgumentException;
+use Source\Domain\VO\Traits\Validatable;
 use Stringable;
 
 final readonly class Password implements Stringable
 {
+    use Validatable;
+
     public function __construct(private string $value) {}
 
-    public static function parse(string $value): self
+    private static function validate(string $value): true|Error
     {
-        if (! self::isValid($value)) {
-            throw new InvalidArgumentException('Password must be at least 8 characters long.');
+        $length = mb_strlen($value);
+        if ($length < 4 || $length > 255) {
+            return Error::parse('Password must be between 4 and 255 characters.');
         }
 
-        return new self($value);
+        return true;
     }
 
-    public static function isValid(string $value): bool
+    public function hash(): PasswordHashed
     {
-        return strlen($value) >= 8;
+        $hashed = password_hash($this->value, PASSWORD_DEFAULT);
+
+        return PasswordHashed::parse($hashed);
     }
 
     public function __toString(): string

@@ -4,25 +4,22 @@ declare(strict_types=1);
 
 namespace Source\Domain\VO;
 
-use InvalidArgumentException;
+use Source\Domain\VO\Traits\Validatable;
 use Stringable;
 
 final readonly class Email implements Stringable
 {
+    use Validatable;
+
     public function __construct(private string $value) {}
 
-    public static function parse(string $value): self
+    private static function validate(string $value): true|Error
     {
-        if (! self::isValid($value)) {
-            throw new InvalidArgumentException('Invalid email format.');
+        if (! filter_var($value, FILTER_VALIDATE_EMAIL)) {
+            return Error::parse('Invalid email format.');
         }
 
-        return new self($value);
-    }
-
-    public static function isValid(string $value): bool
-    {
-        return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
+        return true;
     }
 
     public function __toString(): string
