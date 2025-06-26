@@ -10,6 +10,7 @@ return RectorConfig::configure()
         __DIR__.'/app',
         __DIR__.'/database',
         __DIR__.'/routes',
+        __DIR__.'/source',
     ])
     ->withRules([
         DeclareStrictTypesRector::class,
