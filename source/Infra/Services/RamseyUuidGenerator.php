@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Source\Infra\Services;
 
 use Ramsey\Uuid\Uuid;
-use Source\Domain\Interfaces\UuidGeneratorInterface;
+use Source\Domain\Interfaces\Services\UuidGeneratorInterface;
 
 class RamseyUuidGenerator implements UuidGeneratorInterface
 {
