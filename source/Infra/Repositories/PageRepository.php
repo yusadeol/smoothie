@@ -5,16 +5,11 @@ declare(strict_types=1);
 namespace Source\Infra\Repositories;
 
 use Source\Domain\Entities\Page;
-use Source\Domain\Entities\User;
 use Source\Domain\Interfaces\Repositories\PageRepositoryInterface;
-use Source\Domain\VO\Email;
 use Source\Domain\VO\Error;
-use Source\Domain\VO\Name;
-use Source\Domain\VO\Password;
 use Source\Domain\VO\Slug;
 use Source\Domain\VO\Title;
 use Source\Domain\VO\Uuid;
-use Source\Infra\Factories\UuidGeneratorFactory;
 
 final readonly class PageRepository implements PageRepositoryInterface
 {
@@ -23,65 +18,44 @@ final readonly class PageRepository implements PageRepositoryInterface
 
     public function __construct()
     {
-        $uuidGenerator = UuidGeneratorFactory::create();
-
-        $user = new User(
-            Uuid::parse($uuidGenerator->generate()),
-            Name::parse('Yuri Oliveira'),
-            Email::parse('yuri.oliveira@ysocode.com'),
-            Password::parse('senha123')->hash()
-        );
+        $userId = Uuid::parse('0197af11-2043-7259-88d6-04da13901d1b');
 
         $this->pages = [
-            new Page(
-                Uuid::parse($uuidGenerator->generate()),
-                Title::parse('Página Inicial'),
-                Slug::parse('pagina-inicial'),
-                $user
-            ),
-            new Page(
-                Uuid::parse($uuidGenerator->generate()),
-                Title::parse('Sobre Nós'),
-                Slug::parse('sobre-nos'),
-                $user
-            ),
-            new Page(
-                Uuid::parse($uuidGenerator->generate()),
-                Title::parse('Serviços'),
-                Slug::parse('servicos'),
-                $user
-            ),
-            new Page(
-                Uuid::parse($uuidGenerator->generate()),
-                Title::parse('Contato'),
-                Slug::parse('contato'),
-                $user
-            ),
-            new Page(
-                Uuid::parse($uuidGenerator->generate()),
-                Title::parse('Política de Privacidade'),
-                Slug::parse('politica-de-privacidade'),
-                $user
-            ),
+            (string) $userId => [
+                new Page(
+                    Uuid::parse('0197af10-5089-713d-a3d3-f3937f625476'),
+                    Title::parse('Página Inicial'),
+                    Slug::parse('pagina-inicial'),
+                    $userId
+                ),
+            ],
         ];
-    }
-
-    /**
-     * @return array<Page>|Error
-     */
-    public function getAll(): array|Error
-    {
-        return $this->pages ?? Error::parse('No pages found.');
     }
 
     public function getById(Uuid $id): Page|Error
     {
-        foreach ($this->pages as $page) {
-            if ($page->id === $id) {
-                return $page;
+        foreach ($this->pages as $pages) {
+            foreach ($pages as $page) {
+                if ($page->id->equals($id)) {
+                    return $page;
+                }
             }
         }
 
         return Error::parse('Page not found for the given ID.');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAllByUserId(Uuid $id): array|Error
+    {
+        foreach ($this->pages as $pageId => $pages) {
+            if (Uuid::parse($pageId)->equals($id)) {
+                return $pages;
+            }
+        }
+
+        return Error::parse('No pages found.');
     }
 }

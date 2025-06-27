@@ -14,6 +14,8 @@ class Page
         public Uuid $id,
         public Title $title,
         public Slug $slug,
-        public User $author,
+        public Uuid $userId,
+        /** @var array<Component> */
+        public array $components = []
     ) {}
 }

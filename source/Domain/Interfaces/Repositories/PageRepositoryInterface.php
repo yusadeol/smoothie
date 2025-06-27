@@ -10,10 +10,10 @@ use Source\Domain\VO\Uuid;
 
 interface PageRepositoryInterface
 {
+    public function getById(Uuid $id): Page|Error;
+
     /**
      * @return array<Page>|Error
      */
-    public function getAll(): array|Error;
-
-    public function getById(Uuid $id): Page|Error;
+    public function getAllByUserId(Uuid $id): array|Error;
 }
