@@ -16,4 +16,9 @@ enum ComponentChildType: string
             self::ICON => 'Ícone',
         };
     }
+
+    public function toString(): string
+    {
+        return $this->value;
+    }
 }

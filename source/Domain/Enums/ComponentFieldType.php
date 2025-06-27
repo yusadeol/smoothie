@@ -24,4 +24,9 @@ enum ComponentFieldType: string
             self::NUMBER => 'Número',
         };
     }
+
+    public function toString(): string
+    {
+        return $this->value;
+    }
 }

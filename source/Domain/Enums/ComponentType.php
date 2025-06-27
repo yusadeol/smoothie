@@ -20,4 +20,9 @@ enum ComponentType: string
             self::LIST => 'Lista',
         };
     }
+
+    public function toString(): string
+    {
+        return $this->value;
+    }
 }
