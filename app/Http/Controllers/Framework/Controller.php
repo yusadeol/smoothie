@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Framework;
 use CoffeeCode\Router\Router;
 use Smarty\Smarty;
 
-class Controller
+readonly class Controller
 {
     protected Smarty $smarty;
 

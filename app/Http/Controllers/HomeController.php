@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Framework\Controller;
 
-class HomeController extends Controller
+final readonly class HomeController extends Controller
 {
     public function __invoke(): void
     {
