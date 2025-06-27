@@ -25,4 +25,9 @@ trait Validatable
     }
 
     abstract private static function validate(string $value): true|Error;
+
+    public function equals(self $other): bool
+    {
+        return $this->value === $other->value;
+    }
 }
