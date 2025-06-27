@@ -16,4 +16,17 @@ class Component
         public ComponentType $type,
         public Uuid $pageId
     ) {}
+
+    /**
+     * @return array<string>
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => (string) $this->id,
+            'name' => (string) $this->name,
+            'type' => $this->type->toString(),
+            'pageId' => (string) $this->pageId,
+        ];
+    }
 }
