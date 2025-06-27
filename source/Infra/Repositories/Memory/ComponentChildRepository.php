@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Source\Infra\Repositories;
+namespace Source\Infra\Repositories\Memory;
 
 use Source\Domain\Entities\ComponentChild;
 use Source\Domain\Enums\ComponentChildType;

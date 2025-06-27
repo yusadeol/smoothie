@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Source\Infra\Repositories;
+namespace Source\Infra\Repositories\Memory;
 
 use Source\Domain\Entities\User;
 use Source\Domain\Interfaces\Repositories\UserRepositoryInterface;
