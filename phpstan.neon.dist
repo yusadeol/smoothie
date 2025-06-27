@@ -3,5 +3,6 @@ parameters:
     paths:
         - app/
         - routes/
+        - source/
 
     level: 10
