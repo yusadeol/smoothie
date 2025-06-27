@@ -20,7 +20,7 @@ final readonly class Uuid implements Stringable
             return Error::parse('UUID must be between 4 and 255 characters.');
         }
 
-        $pattern = '/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
+        $pattern = '/^[0-9a-f]{8}-[0-9a-f]{4}-[1678][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
         if (preg_match($pattern, $value) !== 1) {
             return Error::parse('Invalid UUID format.');
         }
