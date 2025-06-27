@@ -13,6 +13,7 @@ use Source\Domain\VO\Uuid;
 
 final readonly class ComponentChildRepository implements ComponentChildRepositoryInterface
 {
+    /** @var array<string, array<ComponentChild>> */
     private array $componentChildren;
 
     public function __construct()

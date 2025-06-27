@@ -13,7 +13,7 @@ use Source\Domain\VO\Uuid;
 
 final readonly class PageRepository implements PageRepositoryInterface
 {
-    /** @var array<Page> */
+    /** @var array<string, array<Page>> */
     private array $pages;
 
     public function __construct()
@@ -43,6 +43,19 @@ final readonly class PageRepository implements PageRepositoryInterface
         }
 
         return Error::parse('Page not found for the given ID.');
+    }
+
+    public function getBySlug(Slug $slug): Page|Error
+    {
+        foreach ($this->pages as $pages) {
+            foreach ($pages as $page) {
+                if ($page->slug->equals($slug)) {
+                    return $page;
+                }
+            }
+        }
+
+        return Error::parse('Page not found for the given slug.');
     }
 
     /**
