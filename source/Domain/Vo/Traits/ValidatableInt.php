@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Source\Domain\VO\Traits;
+namespace Source\Domain\Vo\Traits;
 
 use InvalidArgumentException;
-use Source\Domain\VO\Error;
+use Source\Domain\Vo\Error;
 
-trait Validatable
+trait ValidatableInt
 {
-    public static function parse(string $value): self
+    public function __construct(public int $value) {}
+
+    public static function parse(int $value): self
     {
         $isValid = self::validate($value);
         if ($isValid instanceof Error) {
@@ -19,12 +21,12 @@ trait Validatable
         return new self($value);
     }
 
-    public static function isValid(string $value): bool
+    public static function isValid(int $value): bool
     {
         return self::validate($value) === true;
     }
 
-    abstract private static function validate(string $value): true|Error;
+    abstract private static function validate(int $value): true|Error;
 
     public function equals(self $other): bool
     {

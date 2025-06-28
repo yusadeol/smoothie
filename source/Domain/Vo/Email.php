@@ -2,16 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Source\Domain\VO;
+namespace Source\Domain\Vo;
 
-use Source\Domain\VO\Traits\Validatable;
+use Source\Domain\Vo\Traits\ValidatableString;
 use Stringable;
 
 final readonly class Email implements Stringable
 {
-    use Validatable;
-
-    public function __construct(private string $value) {}
+    use ValidatableString;
 
     private static function validate(string $value): true|Error
     {
