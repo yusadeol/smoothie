@@ -4,19 +4,14 @@ declare(strict_types=1);
 
 namespace Source\App\UseCases\FetchComponentsByPageSlug;
 
-use Source\Domain\Entities\Component;
-use Source\Domain\Interfaces\Repositories\ComponentChildRepositoryInterface;
-use Source\Domain\Interfaces\Repositories\ComponentRepositoryInterface;
 use Source\Domain\Interfaces\Repositories\PageRepositoryInterface;
-use Source\Domain\VO\Error;
-use Source\Domain\VO\Slug;
+use Source\Domain\Vo\Error;
+use Source\Domain\Vo\Slug;
 
 final readonly class FetchComponentsByPageSlug
 {
     public function __construct(
-        public PageRepositoryInterface $pageRepository,
-        public ComponentRepositoryInterface $componentRepository,
-        public ComponentChildRepositoryInterface $componentChildRepository
+        private PageRepositoryInterface $pageRepository,
     ) {}
 
     public function execute(Input $input): Output|Error
@@ -30,13 +25,6 @@ final readonly class FetchComponentsByPageSlug
             return $page;
         }
 
-        $components = $this->componentRepository->getAllByPageId($page->id);
-        if ($components instanceof Error) {
-            return $components;
-        }
-
-        $componentsArray = array_map(fn (Component $component): array => $component->toArray(), $components);
-
-        return new Output($componentsArray);
+        return new Output;
     }
 }

@@ -7,18 +7,14 @@ namespace App\Http\Controllers\Framework;
 use CoffeeCode\Router\Router;
 use Source\App\UseCases\FetchComponentsByPageSlug\FetchComponentsByPageSlug;
 use Source\App\UseCases\FetchComponentsByPageSlug\Input;
-use Source\Domain\Interfaces\Repositories\ComponentChildRepositoryInterface;
-use Source\Domain\Interfaces\Repositories\ComponentRepositoryInterface;
 use Source\Domain\Interfaces\Repositories\PageRepositoryInterface;
-use Source\Domain\VO\Error;
+use Source\Domain\Vo\Error;
 
 final readonly class PageController extends Controller
 {
     public function __construct(
         Router $router,
-        private PageRepositoryInterface $pageRepository,
-        private ComponentRepositoryInterface $componentRepository,
-        private ComponentChildRepositoryInterface $componentChildRepository
+        private PageRepositoryInterface $pageRepository
     ) {
         parent::__construct($router);
     }
@@ -36,9 +32,7 @@ final readonly class PageController extends Controller
         }
 
         $fetchComponentsByPageSlug = new FetchComponentsByPageSlug(
-            $this->pageRepository,
-            $this->componentRepository,
-            $this->componentChildRepository
+            $this->pageRepository
         );
 
         $output = $fetchComponentsByPageSlug->execute(
@@ -53,7 +47,6 @@ final readonly class PageController extends Controller
             return;
         }
 
-        $this->smarty->assign('components', $output->components);
-        $this->smarty->display('framework/page.tpl');
+        //        $this->smarty->display('framework/page.tpl');
     }
 }

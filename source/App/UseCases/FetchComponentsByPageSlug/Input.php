@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Source\App\UseCases\FetchComponentsByPageSlug;
 
-class Input
+final readonly class Input
 {
     public function __construct(public string $pageSlug) {}
 }
