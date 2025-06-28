@@ -6,11 +6,11 @@ namespace Source\Infra\Repositories\Memory;
 
 use Source\Domain\Entities\User;
 use Source\Domain\Interfaces\Repositories\UserRepositoryInterface;
-use Source\Domain\VO\Email;
-use Source\Domain\VO\Error;
-use Source\Domain\VO\Name;
-use Source\Domain\VO\Password;
-use Source\Domain\VO\Uuid;
+use Source\Domain\Vo\Email;
+use Source\Domain\Vo\Error;
+use Source\Domain\Vo\Name;
+use Source\Domain\Vo\Password;
+use Source\Domain\Vo\Uuid;
 
 final readonly class UserRepository implements UserRepositoryInterface
 {
