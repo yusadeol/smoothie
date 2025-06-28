@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Source\Domain\Entities;
 
-use Source\Domain\VO\Email;
-use Source\Domain\VO\Name;
-use Source\Domain\VO\PasswordHashed;
-use Source\Domain\VO\Uuid;
+use Source\Domain\Vo\Email;
+use Source\Domain\Vo\Name;
+use Source\Domain\Vo\PasswordHashed;
+use Source\Domain\Vo\Uuid;
 
 class User
 {
