@@ -7,14 +7,13 @@ namespace App\Http\Controllers;
 use CoffeeCode\Router\Router;
 use Source\App\UseCases\FetchComponentsByPageSlug\FetchComponentsByPageSlug;
 use Source\App\UseCases\FetchComponentsByPageSlug\Input;
-use Source\Domain\Interfaces\Repositories\PageRepositoryInterface;
 use Source\Domain\Vo\Error;
 
 final readonly class PageController extends Controller
 {
     public function __construct(
         Router $router,
-        private PageRepositoryInterface $pageRepository
+        private FetchComponentsByPageSlug $fetchComponentsByPageSlug
     ) {
         parent::__construct($router);
     }
@@ -31,11 +30,7 @@ final readonly class PageController extends Controller
             return;
         }
 
-        $fetchComponentsByPageSlug = new FetchComponentsByPageSlug(
-            $this->pageRepository
-        );
-
-        $output = $fetchComponentsByPageSlug->execute(
+        $output = $this->fetchComponentsByPageSlug->execute(
             new Input(
                 $slug
             )
