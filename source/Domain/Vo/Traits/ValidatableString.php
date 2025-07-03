@@ -9,7 +9,7 @@ use Source\Domain\Vo\Error;
 
 trait ValidatableString
 {
-    public function __construct(public string $value) {}
+    public function __construct(public readonly string $value) {}
 
     public static function parse(string $value): self
     {
