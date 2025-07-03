@@ -2,12 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Framework;
+namespace App\Http\Controllers\Error;
+
+use App\Http\Controllers\Controller;
 
 final readonly class MethodNotAllowedController extends Controller
 {
     public function __invoke(): void
     {
-        $this->smarty->display('framework/methodNotAllowed.tpl');
+        $this->smarty->display('framework/error/methodNotAllowed.tpl');
     }
 }

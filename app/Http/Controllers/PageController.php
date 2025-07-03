@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Framework;
+namespace App\Http\Controllers;
 
 use CoffeeCode\Router\Router;
 use Source\App\UseCases\FetchComponentsByPageSlug\FetchComponentsByPageSlug;
@@ -47,6 +47,6 @@ final readonly class PageController extends Controller
             return;
         }
 
-        //        $this->smarty->display('framework/page.tpl');
+        $this->smarty->display('framework/page.tpl');
     }
 }

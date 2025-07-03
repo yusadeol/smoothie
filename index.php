@@ -7,7 +7,7 @@ use CoffeeCode\Router\Router;
 
 $router = new Router('http://localhost/smoothie');
 
-$frameworkRoutes = require_once __DIR__.'/routes/framework.php';
+$frameworkRoutes = require_once __DIR__.'/routes/error.php';
 $webRoutes = require_once __DIR__.'/routes/web.php';
 
 $frameworkRoutes($router);

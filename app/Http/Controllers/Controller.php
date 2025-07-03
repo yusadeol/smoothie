@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers\Framework;
+namespace App\Http\Controllers;
 
 use CoffeeCode\Router\Router;
 use Smarty\Smarty;
