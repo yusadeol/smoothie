@@ -22,6 +22,7 @@ final readonly class Banner implements ComponentInterface
     public function __construct(
         public Uuid $id,
         public Uuid $pageId,
+        public ?Uuid $parentId,
         public ?array $fields = null,
         public ?array $subComponents = null
     ) {}

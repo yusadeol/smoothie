@@ -18,6 +18,7 @@ final readonly class Image implements ComponentInterface
     public function __construct(
         public Uuid $id,
         public Uuid $pageId,
+        public ?Uuid $parentId,
         public ?array $fields = null,
         public ?array $subComponents = null
     ) {}
@@ -39,9 +40,8 @@ final readonly class Image implements ComponentInterface
                     Url::class
                 ),
             ],
-            [
-
-            ]
+            null,
+            true
         );
     }
 }

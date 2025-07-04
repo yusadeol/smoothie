@@ -18,6 +18,7 @@ final readonly class ComponentDefinition
         public Key $key,
         public Label $label,
         public ?array $fields = null,
-        public ?array $subComponents = null
+        public ?array $subComponents = null,
+        public bool $isNested = false
     ) {}
 }
