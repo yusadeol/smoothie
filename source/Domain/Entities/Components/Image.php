@@ -15,6 +15,9 @@ use Source\Domain\Vo\Uuid;
 
 final readonly class Image implements ComponentInterface
 {
+    /**
+     * {@inheritDoc}
+     */
     public function __construct(
         public Uuid $id,
         public Uuid $pageId,
