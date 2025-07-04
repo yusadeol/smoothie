@@ -7,10 +7,10 @@ namespace Source\Domain\Entities\Fields;
 use InvalidArgumentException;
 use Source\Domain\Entities\Fields\Definitions\FieldDefinition;
 use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
-use Source\Domain\Vo\Url as UrlVo;
+use Source\Domain\Vo\Title as TitleVo;
 use Source\Domain\Vo\Uuid;
 
-final class Url implements FieldInterface
+final class Title implements FieldInterface
 {
     public function __construct(
         public readonly Uuid $id,
@@ -19,9 +19,9 @@ final class Url implements FieldInterface
         public mixed $value {
             set
     {
-        if (! $value instanceof UrlVo) {
-            $urlVoClass = UrlVo::class;
-            throw new InvalidArgumentException("Value must be of type {$urlVoClass}.");
+        if (! $value instanceof TitleVo) {
+            $titleVoClass = TitleVo::class;
+            throw new InvalidArgumentException("Value must be of type {$titleVoClass}.");
         }
         $this->value = $value;
     }
