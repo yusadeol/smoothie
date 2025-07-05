@@ -15,5 +15,5 @@ interface FieldRepositoryInterface
     /**
      * @return array<FieldInterface>|Error
      */
-    public function getAllByComponentId(Uuid $id): array|Error;
+    public function getAllByOwnerId(Uuid $id): array|Error;
 }
