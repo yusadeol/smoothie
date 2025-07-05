@@ -17,7 +17,6 @@ interface SubComponentInterface
      */
     public function __construct(
         Uuid $id,
-        Uuid $pageId,
         ?Uuid $parentId,
         ?array $fields = null,
         ?array $subComponents = null

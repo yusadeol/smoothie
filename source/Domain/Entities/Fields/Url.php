@@ -16,8 +16,7 @@ final class Url implements FieldInterface
 {
     public function __construct(
         public readonly Uuid $id,
-        public readonly Uuid $componentId,
-        public readonly FieldDefinition $definition,
+        public readonly Uuid $ownerId,
         public mixed $value {
             set {
                 if (! $value instanceof UrlVo) {

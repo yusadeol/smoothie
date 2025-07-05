@@ -14,15 +14,14 @@ use Source\Domain\Vo\Label;
 use Source\Domain\Vo\QuantityRange;
 use Source\Domain\Vo\Uuid;
 
-final readonly class Banner implements ComponentInterface
+final class Banner implements ComponentInterface
 {
     /**
      * {@inheritDoc}
      */
     public function __construct(
-        public Uuid $id,
-        public Uuid $pageId,
-        public ?Uuid $parentId,
+        public readonly Uuid $id,
+        public readonly Uuid $pageId,
         public ?array $fields = null,
         public ?array $subComponents = null
     ) {}
@@ -35,6 +34,7 @@ final readonly class Banner implements ComponentInterface
         return new ComponentDefinition(
             Key::parse('banner'),
             Label::parse('Banner'),
+            self::class,
             [
                 Title::getDefinition(),
                 Url::getDefinition(),

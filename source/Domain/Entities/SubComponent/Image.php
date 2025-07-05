@@ -18,9 +18,8 @@ final class Image implements SubComponentInterface
      * {@inheritDoc}
      */
     public function __construct(
-        public Uuid $id,
-        public Uuid $pageId,
-        public ?Uuid $parentId,
+        public readonly Uuid $id,
+        public readonly ?Uuid $parentId,
         public ?array $fields = null,
         public ?array $subComponents = null
     ) {}
