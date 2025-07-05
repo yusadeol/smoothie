@@ -7,8 +7,8 @@ namespace Source\Domain\Entities\Components\Definitions;
 use Source\Domain\Entities\Components\Interfaces\ComponentInterface;
 use Source\Domain\Entities\Fields\Definitions\FieldDefinition;
 use Source\Domain\Entities\SubComponent\Definitions\SubComponentDefinition;
-use Source\Domain\Vo\Key;
-use Source\Domain\Vo\Label;
+use Source\Domain\ValueObjects\Key;
+use Source\Domain\ValueObjects\Label;
 
 final readonly class ComponentDefinition
 {

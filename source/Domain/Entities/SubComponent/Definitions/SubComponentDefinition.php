@@ -6,9 +6,9 @@ namespace Source\Domain\Entities\SubComponent\Definitions;
 
 use Source\Domain\Entities\Fields\Definitions\FieldDefinition;
 use Source\Domain\Entities\SubComponent\Interfaces\SubComponentInterface;
-use Source\Domain\Vo\Key;
-use Source\Domain\Vo\Label;
-use Source\Domain\Vo\QuantityRange;
+use Source\Domain\ValueObjects\Key;
+use Source\Domain\ValueObjects\Label;
+use Source\Domain\ValueObjects\QuantityRange;
 
 final class SubComponentDefinition
 {

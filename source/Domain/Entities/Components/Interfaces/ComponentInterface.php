@@ -7,7 +7,7 @@ namespace Source\Domain\Entities\Components\Interfaces;
 use Source\Domain\Entities\Components\Definitions\ComponentDefinition;
 use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
 use Source\Domain\Entities\SubComponent\Interfaces\SubComponentInterface;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Uuid;
 
 interface ComponentInterface
 {

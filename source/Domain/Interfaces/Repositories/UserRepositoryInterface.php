@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Source\Domain\Interfaces\Repositories;
 
 use Source\Domain\Entities\User;
-use Source\Domain\Vo\Error;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Error;
+use Source\Domain\ValueObjects\Uuid;
 
 interface UserRepositoryInterface
 {

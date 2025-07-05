@@ -8,8 +8,8 @@ use Source\Domain\Interfaces\Repositories\ComponentRepositoryInterface;
 use Source\Domain\Interfaces\Repositories\FieldRepositoryInterface;
 use Source\Domain\Interfaces\Repositories\PageRepositoryInterface;
 use Source\Domain\Interfaces\Repositories\SubComponentRepositoryInterface;
-use Source\Domain\Vo\Error;
-use Source\Domain\Vo\Slug;
+use Source\Domain\ValueObjects\Error;
+use Source\Domain\ValueObjects\Slug;
 
 final readonly class FetchComponentsByPageSlug
 {

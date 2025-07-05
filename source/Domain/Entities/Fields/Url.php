@@ -7,10 +7,10 @@ namespace Source\Domain\Entities\Fields;
 use InvalidArgumentException;
 use Source\Domain\Entities\Fields\Definitions\FieldDefinition;
 use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
-use Source\Domain\Vo\Key;
-use Source\Domain\Vo\Label;
-use Source\Domain\Vo\Url as UrlVo;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Key;
+use Source\Domain\ValueObjects\Label;
+use Source\Domain\ValueObjects\Url as UrlVo;
+use Source\Domain\ValueObjects\Uuid;
 
 final class Url implements FieldInterface
 {

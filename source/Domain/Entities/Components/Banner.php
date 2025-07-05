@@ -12,10 +12,10 @@ use Source\Domain\Entities\Fields\Title;
 use Source\Domain\Entities\Fields\Url;
 use Source\Domain\Entities\SubComponent\Image;
 use Source\Domain\Entities\SubComponent\Interfaces\SubComponentInterface;
-use Source\Domain\Vo\Key;
-use Source\Domain\Vo\Label;
-use Source\Domain\Vo\QuantityRange;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Key;
+use Source\Domain\ValueObjects\Label;
+use Source\Domain\ValueObjects\QuantityRange;
+use Source\Domain\ValueObjects\Uuid;
 
 final class Banner implements ComponentInterface
 {

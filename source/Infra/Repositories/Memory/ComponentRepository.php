@@ -7,8 +7,8 @@ namespace Source\Infra\Repositories\Memory;
 use Source\Domain\Entities\Components\Banner;
 use Source\Domain\Entities\Components\Interfaces\ComponentInterface;
 use Source\Domain\Interfaces\Repositories\ComponentRepositoryInterface;
-use Source\Domain\Vo\Error;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Error;
+use Source\Domain\ValueObjects\Uuid;
 
 final readonly class ComponentRepository implements ComponentRepositoryInterface
 {

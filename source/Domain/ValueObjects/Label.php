@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Source\Domain\Vo;
+namespace Source\Domain\ValueObjects;
 
-use Source\Domain\Vo\Traits\ValidatableString;
+use Source\Domain\ValueObjects\Traits\ValidatableString;
 use Stringable;
 
-final readonly class Name implements Stringable
+final readonly class Label implements Stringable
 {
     use ValidatableString;
 
@@ -15,7 +15,7 @@ final readonly class Name implements Stringable
     {
         $length = mb_strlen($value);
         if ($length < 4 || $length > 255) {
-            return Error::parse('Name must be between 4 and 255 characters.');
+            return Error::parse('Label must be between 4 and 255 characters.');
         }
 
         return true;

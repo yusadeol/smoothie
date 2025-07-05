@@ -6,10 +6,10 @@ namespace Source\Infra\Repositories\Memory;
 
 use Source\Domain\Entities\Page;
 use Source\Domain\Interfaces\Repositories\PageRepositoryInterface;
-use Source\Domain\Vo\Error;
-use Source\Domain\Vo\Slug;
-use Source\Domain\Vo\Title;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Error;
+use Source\Domain\ValueObjects\Slug;
+use Source\Domain\ValueObjects\Title;
+use Source\Domain\ValueObjects\Uuid;
 
 final readonly class PageRepository implements PageRepositoryInterface
 {

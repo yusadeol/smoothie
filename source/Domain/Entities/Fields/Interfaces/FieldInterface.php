@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Source\Domain\Entities\Fields\Interfaces;
 
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Uuid;
 
 interface FieldInterface
 {

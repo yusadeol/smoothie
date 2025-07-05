@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Source\Domain\Vo;
+namespace Source\Domain\ValueObjects;
 
-use Source\Domain\Vo\Traits\ValidatableString;
+use Source\Domain\ValueObjects\Traits\ValidatableString;
 use Stringable;
 
-final readonly class PasswordHashed implements Stringable
+final readonly class Password implements Stringable
 {
     use ValidatableString;
 
@@ -18,16 +18,14 @@ final readonly class PasswordHashed implements Stringable
             return Error::parse('Password must be between 4 and 255 characters.');
         }
 
-        if (mb_strlen($value) < 60 || preg_match('/^\$2[ayb]\$.{56}$/', $value) !== 1) {
-            return Error::parse('Invalid password hash format.');
-        }
-
         return true;
     }
 
-    public function verify(Password $plain): bool
+    public function hash(): PasswordHashed
     {
-        return password_verify((string) $plain, $this->value);
+        $hashed = password_hash($this->value, PASSWORD_DEFAULT);
+
+        return PasswordHashed::parse($hashed);
     }
 
     public function __toString(): string

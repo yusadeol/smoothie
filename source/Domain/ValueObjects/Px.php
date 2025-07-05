@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Source\Domain\Vo;
+namespace Source\Domain\ValueObjects;
 
-use Source\Domain\Vo\Traits\ValidatableInt;
+use Source\Domain\ValueObjects\Traits\ValidatableInt;
 
 final readonly class Px
 {

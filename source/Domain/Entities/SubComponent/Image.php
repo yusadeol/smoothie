@@ -10,9 +10,9 @@ use Source\Domain\Entities\Fields\Url;
 use Source\Domain\Entities\SubComponent\Definitions\SubComponentDefinition;
 use Source\Domain\Entities\SubComponent\Interfaces\SubComponentInterface;
 use Source\Domain\Entities\SubComponent\Traits\HasFields;
-use Source\Domain\Vo\Key;
-use Source\Domain\Vo\Label;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Key;
+use Source\Domain\ValueObjects\Label;
+use Source\Domain\ValueObjects\Uuid;
 
 final class Image implements SubComponentInterface
 {

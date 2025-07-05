@@ -6,7 +6,7 @@ namespace Source\Domain\Entities\SubComponent\Interfaces;
 
 use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
 use Source\Domain\Entities\SubComponent\Definitions\SubComponentDefinition;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Uuid;
 
 interface SubComponentInterface
 {

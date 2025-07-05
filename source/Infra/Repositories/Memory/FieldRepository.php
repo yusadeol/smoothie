@@ -8,10 +8,10 @@ use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
 use Source\Domain\Entities\Fields\Title;
 use Source\Domain\Entities\Fields\Url;
 use Source\Domain\Interfaces\Repositories\FieldRepositoryInterface;
-use Source\Domain\Vo\Error;
-use Source\Domain\Vo\Title as TitleVo;
-use Source\Domain\Vo\Url as UrlVo;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Error;
+use Source\Domain\ValueObjects\Title as TitleVo;
+use Source\Domain\ValueObjects\Url as UrlVo;
+use Source\Domain\ValueObjects\Uuid;
 
 final readonly class FieldRepository implements FieldRepositoryInterface
 {

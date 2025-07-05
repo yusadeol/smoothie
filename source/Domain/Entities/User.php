@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Source\Domain\Entities;
 
-use Source\Domain\Vo\Email;
-use Source\Domain\Vo\Name;
-use Source\Domain\Vo\PasswordHashed;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Email;
+use Source\Domain\ValueObjects\Name;
+use Source\Domain\ValueObjects\PasswordHashed;
+use Source\Domain\ValueObjects\Uuid;
 
 final readonly class User
 {

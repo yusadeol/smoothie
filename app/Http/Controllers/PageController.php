@@ -7,7 +7,7 @@ namespace App\Http\Controllers;
 use CoffeeCode\Router\Router;
 use Source\App\UseCases\FetchComponentsByPageSlug\FetchComponentsByPageSlug;
 use Source\App\UseCases\FetchComponentsByPageSlug\Input;
-use Source\Domain\Vo\Error;
+use Source\Domain\ValueObjects\Error;
 
 final readonly class PageController extends Controller
 {

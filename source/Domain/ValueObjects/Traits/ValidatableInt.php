@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Source\Domain\Vo\Traits;
+namespace Source\Domain\ValueObjects\Traits;
 
 use InvalidArgumentException;
-use Source\Domain\Vo\Error;
+use Source\Domain\ValueObjects\Error;
 
 trait ValidatableInt
 {

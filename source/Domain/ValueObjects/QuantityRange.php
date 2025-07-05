@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Source\Domain\Vo;
+namespace Source\Domain\ValueObjects;
 
 use InvalidArgumentException;
 

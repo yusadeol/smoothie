@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Source\Domain\Vo;
+namespace Source\Domain\ValueObjects;
 
-use Source\Domain\Vo\Traits\ValidatableString;
+use Source\Domain\ValueObjects\Traits\ValidatableString;
 use Stringable;
 
 final readonly class Slug implements Stringable

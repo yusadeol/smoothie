@@ -7,8 +7,8 @@ namespace Source\Infra\Repositories\Memory;
 use Source\Domain\Entities\SubComponent\Image;
 use Source\Domain\Entities\SubComponent\Interfaces\SubComponentInterface;
 use Source\Domain\Interfaces\Repositories\SubComponentRepositoryInterface;
-use Source\Domain\Vo\Error;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Error;
+use Source\Domain\ValueObjects\Uuid;
 
 final readonly class SubComponentRepository implements SubComponentRepositoryInterface
 {

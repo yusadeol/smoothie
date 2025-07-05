@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Source\Domain\Entities;
 
 use Source\Domain\Entities\Components\Interfaces\ComponentInterface;
-use Source\Domain\Vo\Slug;
-use Source\Domain\Vo\Title;
-use Source\Domain\Vo\Uuid;
+use Source\Domain\ValueObjects\Slug;
+use Source\Domain\ValueObjects\Title;
+use Source\Domain\ValueObjects\Uuid;
 
 final class Page
 {
