@@ -11,11 +11,11 @@ use Source\Domain\Vo\Label;
 final readonly class FieldDefinition
 {
     /**
-     * @param  class-string<FieldInterface>  $field
+     * @param  class-string<FieldInterface>  $fieldClass
      */
     public function __construct(
         public Key $key,
         public Label $label,
-        public string $field
+        public string $fieldClass
     ) {}
 }

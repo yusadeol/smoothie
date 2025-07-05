@@ -1,0 +1,6 @@
+{
+    "notPath": [
+        "source/Domain/Entities/Fields/Title.php",
+        "source/Domain/Entities/Fields/Url.php"
+    ]
+}

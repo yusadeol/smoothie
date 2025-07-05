@@ -7,6 +7,8 @@ namespace Source\Domain\Entities\Fields;
 use InvalidArgumentException;
 use Source\Domain\Entities\Fields\Definitions\FieldDefinition;
 use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
+use Source\Domain\Vo\Key;
+use Source\Domain\Vo\Label;
 use Source\Domain\Vo\Title as TitleVo;
 use Source\Domain\Vo\Uuid;
 
@@ -17,14 +19,22 @@ final class Title implements FieldInterface
         public readonly Uuid $componentId,
         public readonly FieldDefinition $definition,
         public mixed $value {
-            set
-    {
-        if (! $value instanceof TitleVo) {
-            $titleVoClass = TitleVo::class;
-            throw new InvalidArgumentException("Value must be of type {$titleVoClass}.");
-        }
-        $this->value = $value;
-    }
+            set {
+                if (! $value instanceof TitleVo) {
+                    $titleVoClass = TitleVo::class;
+                    throw new InvalidArgumentException("Value must be of type {$titleVoClass}.");
+                }
+                $this->value = $value;
+            }
         }
     ) {}
+
+    public static function getDefinition(): FieldDefinition
+    {
+        return new FieldDefinition(
+            Key::parse('title'),
+            Label::parse('Título'),
+            self::class
+        );
+    }
 }
