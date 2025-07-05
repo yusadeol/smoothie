@@ -9,16 +9,27 @@ use Stringable;
 
 final readonly class Error implements Stringable
 {
-    public function __construct(public string $value) {}
+    public string $value;
 
-    public static function parse(string $value): self
+    public function __construct(
+        string $value
+    ) {
+        $isValid = $this->validate($value);
+        if ($isValid instanceof Error) {
+            throw new InvalidArgumentException((string) $isValid);
+        }
+
+        $this->value = $value;
+    }
+
+    private function validate(string $value): true|Error
     {
         $length = mb_strlen($value);
         if ($length < 4 || $length > 255) {
-            throw new InvalidArgumentException('Error must be between 4 and 255 characters.');
+            return new Error('Error must be between 4 and 255 characters.');
         }
 
-        return new self($value);
+        return true;
     }
 
     public function __toString(): string

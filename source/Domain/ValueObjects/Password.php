@@ -4,18 +4,34 @@ declare(strict_types=1);
 
 namespace Source\Domain\ValueObjects;
 
-use Source\Domain\ValueObjects\Traits\ValidatableString;
+use InvalidArgumentException;
 use Stringable;
 
 final readonly class Password implements Stringable
 {
-    use ValidatableString;
+    public string $value;
+
+    public function __construct(
+        string $value
+    ) {
+        $isValid = self::validate($value);
+        if ($isValid instanceof Error) {
+            throw new InvalidArgumentException((string) $isValid);
+        }
+
+        $this->value = $value;
+    }
+
+    public static function isValid(string $value): bool
+    {
+        return self::validate($value) === true;
+    }
 
     private static function validate(string $value): true|Error
     {
         $length = mb_strlen($value);
         if ($length < 4 || $length > 255) {
-            return Error::parse('Password must be between 4 and 255 characters.');
+            return new Error('Password must be between 4 and 255 characters.');
         }
 
         return true;
@@ -25,7 +41,12 @@ final readonly class Password implements Stringable
     {
         $hashed = password_hash($this->value, PASSWORD_DEFAULT);
 
-        return PasswordHashed::parse($hashed);
+        return new PasswordHashed($hashed);
+    }
+
+    public function equals(self $other): bool
+    {
+        return $this->value === $other->value;
     }
 
     public function __toString(): string

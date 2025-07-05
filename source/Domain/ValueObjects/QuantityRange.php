@@ -8,33 +8,40 @@ use InvalidArgumentException;
 
 final readonly class QuantityRange
 {
-    public function __construct(
-        public int $min,
-        public int $max
-    ) {}
+    public int $min;
 
-    public static function parse(int $min, int $max): self
-    {
+    public int $max;
+
+    public function __construct(
+        int $min,
+        int $max
+    ) {
         $isValid = self::validate($min, $max);
         if ($isValid instanceof Error) {
             throw new InvalidArgumentException((string) $isValid);
         }
 
-        return new self($min, $max);
+        $this->min = $min;
+        $this->max = $max;
+    }
+
+    public static function isValid(int $min, int $max): bool
+    {
+        return self::validate($min, $max) === true;
     }
 
     private static function validate(int $min, int $max): true|Error
     {
         if ($min < 0) {
-            return Error::parse('Min quantity must be >= 0.');
+            return new Error('Min quantity must be >= 0.');
         }
 
         if ($max < 1) {
-            return Error::parse('Max quantity must be >= 1.');
+            return new Error('Max quantity must be >= 1.');
         }
 
         if ($max < $min) {
-            return Error::parse('Max quantity must be >= min quantity.');
+            return new Error('Max quantity must be >= min quantity.');
         }
 
         return true;
