@@ -1,1 +1,1 @@
-<img src="{$subComponent->getField(Source\Domain\Entities\Fields\Url::class)->value}" alt="">
+<img src="{$subComponent->getFieldValue(Source\Domain\Entities\Fields\Url::class)}" alt="">
