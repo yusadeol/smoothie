@@ -15,5 +15,5 @@ interface SubComponentRepositoryInterface
     /**
      * @return array<SubComponentInterface>|Error
      */
-    public function getAllByComponentId(Uuid $id): array|Error;
+    public function getAllByParentId(Uuid $id): array|Error;
 }

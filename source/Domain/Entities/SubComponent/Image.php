@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Source\Domain\Entities\SubComponent;
 
+use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
 use Source\Domain\Entities\Fields\Title;
 use Source\Domain\Entities\Fields\Url;
 use Source\Domain\Entities\SubComponent\Definitions\SubComponentDefinition;
@@ -15,11 +16,12 @@ use Source\Domain\Vo\Uuid;
 final class Image implements SubComponentInterface
 {
     /**
-     * {@inheritDoc}
+     * @param  array<FieldInterface>  $fields
+     * @param  array<SubComponentInterface>|null  $subComponents
      */
     public function __construct(
-        public readonly Uuid $id,
-        public readonly ?Uuid $parentId,
+        public Uuid $id,
+        public Uuid $parentId,
         public ?array $fields = null,
         public ?array $subComponents = null
     ) {}

@@ -45,7 +45,7 @@ final readonly class SubComponentRepository implements SubComponentRepositoryInt
     /**
      * {@inheritDoc}
      */
-    public function getAllByComponentId(Uuid $id): array|Error
+    public function getAllByParentId(Uuid $id): array|Error
     {
         foreach ($this->subComponents as $componentId => $subComponents) {
             if (Uuid::parse($componentId)->equals($id)) {
