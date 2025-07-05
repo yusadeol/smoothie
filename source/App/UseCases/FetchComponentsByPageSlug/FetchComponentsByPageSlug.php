@@ -23,10 +23,10 @@ final readonly class FetchComponentsByPageSlug
     public function execute(Input $input): Output|Error
     {
         if (! Slug::isValid($input->pageSlug)) {
-            return Error::parse('Page not found.');
+            return new Error('Page not found.');
         }
 
-        $page = $this->pageRepository->getBySlug(Slug::parse($input->pageSlug));
+        $page = $this->pageRepository->getBySlug(new Slug($input->pageSlug));
         if ($page instanceof Error) {
             return $page;
         }

@@ -18,14 +18,14 @@ final readonly class PageRepository implements PageRepositoryInterface
 
     public function __construct()
     {
-        $userId = Uuid::parse('0197af11-2043-7259-88d6-04da13901d1b');
+        $userId = new Uuid('0197af11-2043-7259-88d6-04da13901d1b');
 
         $this->pages = [
             (string) $userId => [
                 new Page(
-                    Uuid::parse('0197af10-5089-713d-a3d3-f3937f625476'),
-                    Title::parse('Página Inicial'),
-                    Slug::parse('pagina-inicial'),
+                    new Uuid('0197af10-5089-713d-a3d3-f3937f625476'),
+                    new Title('Página Inicial'),
+                    new Slug('pagina-inicial'),
                     $userId
                 ),
             ],
@@ -42,7 +42,7 @@ final readonly class PageRepository implements PageRepositoryInterface
             }
         }
 
-        return Error::parse('Page not found for the given ID.');
+        return new Error('Page not found for the given ID.');
     }
 
     public function getBySlug(Slug $slug): Page|Error
@@ -55,7 +55,7 @@ final readonly class PageRepository implements PageRepositoryInterface
             }
         }
 
-        return Error::parse('Page not found for the given slug.');
+        return new Error('Page not found for the given slug.');
     }
 
     /**
@@ -64,11 +64,11 @@ final readonly class PageRepository implements PageRepositoryInterface
     public function getAllByUserId(Uuid $id): array|Error
     {
         foreach ($this->pages as $userId => $pages) {
-            if (Uuid::parse($userId)->equals($id)) {
+            if (new Uuid($userId)->equals($id)) {
                 return $pages;
             }
         }
 
-        return Error::parse('No pages found.');
+        return new Error('No pages found.');
     }
 }

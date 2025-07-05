@@ -17,12 +17,12 @@ final readonly class ComponentRepository implements ComponentRepositoryInterface
 
     public function __construct()
     {
-        $pageId = Uuid::parse('0197af10-5089-713d-a3d3-f3937f625476');
+        $pageId = new Uuid('0197af10-5089-713d-a3d3-f3937f625476');
 
         $this->components = [
             (string) $pageId => [
                 new Banner(
-                    Uuid::parse('0197d891-0b0a-70a7-b2b2-a32ff67a5149'),
+                    new Uuid('0197d891-0b0a-70a7-b2b2-a32ff67a5149'),
                     $pageId,
                 ),
             ],
@@ -39,7 +39,7 @@ final readonly class ComponentRepository implements ComponentRepositoryInterface
             }
         }
 
-        return Error::parse('Component not found for the given ID.');
+        return new Error('Component not found for the given ID.');
     }
 
     /**
@@ -48,11 +48,11 @@ final readonly class ComponentRepository implements ComponentRepositoryInterface
     public function getAllByPageId(Uuid $id): array|Error
     {
         foreach ($this->components as $pageId => $components) {
-            if (Uuid::parse($pageId)->equals($id)) {
+            if (new Uuid($pageId)->equals($id)) {
                 return $components;
             }
         }
 
-        return Error::parse('No components found.');
+        return new Error('No components found.');
     }
 }

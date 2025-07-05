@@ -21,10 +21,10 @@ final readonly class UserRepository implements UserRepositoryInterface
     {
         $this->users = [
             new User(
-                Uuid::parse('0197af11-2043-7259-88d6-04da13901d1b'),
-                Name::parse('Yuri Oliveira'),
-                Email::parse('yuri.oliveira@ysocode.com'),
-                Password::parse('senha123')->hash()
+                new Uuid('0197af11-2043-7259-88d6-04da13901d1b'),
+                new Name('Yuri Oliveira'),
+                new Email('yuri.oliveira@ysocode.com'),
+                new Password('senha123')->hash()
             ),
         ];
     }
@@ -37,6 +37,6 @@ final readonly class UserRepository implements UserRepositoryInterface
             }
         }
 
-        return Error::parse('User not found for the given ID.');
+        return new Error('User not found for the given ID.');
     }
 }

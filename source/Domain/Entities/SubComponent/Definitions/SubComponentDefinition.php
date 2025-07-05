@@ -26,6 +26,6 @@ final class SubComponentDefinition
         public readonly ?array $fieldDefinitions = null,
         public readonly ?array $subComponentDefinitions = null,
     ) {
-        $this->quantityRange = QuantityRange::parse(1, 10);
+        $this->quantityRange = new QuantityRange(1, 10);
     }
 }

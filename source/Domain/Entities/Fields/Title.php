@@ -31,8 +31,8 @@ final class Title implements FieldInterface
     public static function getDefinition(): FieldDefinition
     {
         return new FieldDefinition(
-            Key::parse('title'),
-            Label::parse('Título'),
+            new Key('title'),
+            new Label('Título'),
             self::class
         );
     }

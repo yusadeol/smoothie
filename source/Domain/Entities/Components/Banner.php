@@ -35,11 +35,11 @@ final class Banner implements ComponentInterface
     public static function getDefinition(): ComponentDefinition
     {
         $imageDefinition = Image::getDefinition();
-        $imageDefinition->quantityRange = QuantityRange::parse(1, 1);
+        $imageDefinition->quantityRange = new QuantityRange(1, 1);
 
         return new ComponentDefinition(
-            Key::parse('banner'),
-            Label::parse('Banner'),
+            new Key('banner'),
+            new Label('Banner'),
             self::class,
             [
                 Title::getDefinition(),

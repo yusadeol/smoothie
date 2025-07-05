@@ -32,8 +32,8 @@ final class Image implements SubComponentInterface
     public static function getDefinition(): SubComponentDefinition
     {
         return new SubComponentDefinition(
-            Key::parse('image'),
-            Label::parse('Imagem'),
+            new Key('image'),
+            new Label('Imagem'),
             self::class,
             [
                 Title::getDefinition(),

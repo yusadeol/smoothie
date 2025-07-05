@@ -17,12 +17,12 @@ final readonly class SubComponentRepository implements SubComponentRepositoryInt
 
     public function __construct()
     {
-        $componentId = Uuid::parse('0197d891-0b0a-70a7-b2b2-a32ff67a5149');
+        $componentId = new Uuid('0197d891-0b0a-70a7-b2b2-a32ff67a5149');
 
         $this->subComponents = [
             (string) $componentId => [
                 new Image(
-                    Uuid::parse('0197d892-696b-7011-83bd-b7d31ea769db'),
+                    new Uuid('0197d892-696b-7011-83bd-b7d31ea769db'),
                     $componentId
                 ),
             ],
@@ -39,7 +39,7 @@ final readonly class SubComponentRepository implements SubComponentRepositoryInt
             }
         }
 
-        return Error::parse('Subcomponent not found for the given ID.');
+        return new Error('Subcomponent not found for the given ID.');
     }
 
     /**
@@ -48,11 +48,11 @@ final readonly class SubComponentRepository implements SubComponentRepositoryInt
     public function getAllByParentId(Uuid $id): array|Error
     {
         foreach ($this->subComponents as $componentId => $subComponents) {
-            if (Uuid::parse($componentId)->equals($id)) {
+            if (new Uuid($componentId)->equals($id)) {
                 return $subComponents;
             }
         }
 
-        return Error::parse('No subcomponents found.');
+        return new Error('No subcomponents found.');
     }
 }

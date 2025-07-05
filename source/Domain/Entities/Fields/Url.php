@@ -31,8 +31,8 @@ final class Url implements FieldInterface
     public static function getDefinition(): FieldDefinition
     {
         return new FieldDefinition(
-            Key::parse('link'),
-            Label::parse('Link'),
+            new Key('link'),
+            new Label('Link'),
             self::class
         );
     }
