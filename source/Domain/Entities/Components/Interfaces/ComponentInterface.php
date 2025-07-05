@@ -21,5 +21,10 @@ interface ComponentInterface
     /** @var array<SubComponentInterface>|null */
     public ?array $subComponents { get; set; }
 
+    /**
+     * @param class-string<FieldInterface> $fieldClass
+     */
+    public function getField(string $fieldClass): ?FieldInterface;
+
     public static function getDefinition(): ComponentDefinition;
 }

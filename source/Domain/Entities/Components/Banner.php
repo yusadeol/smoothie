@@ -6,6 +6,7 @@ namespace Source\Domain\Entities\Components;
 
 use Source\Domain\Entities\Components\Definitions\ComponentDefinition;
 use Source\Domain\Entities\Components\Interfaces\ComponentInterface;
+use Source\Domain\Entities\Components\Traits\HasFields;
 use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
 use Source\Domain\Entities\Fields\Title;
 use Source\Domain\Entities\Fields\Url;
@@ -18,6 +19,8 @@ use Source\Domain\Vo\Uuid;
 
 final class Banner implements ComponentInterface
 {
+    use HasFields;
+
     /**
      * @param  array<FieldInterface>  $fields
      * @param  array<SubComponentInterface>|null  $subComponents

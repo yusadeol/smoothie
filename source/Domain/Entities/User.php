@@ -9,7 +9,7 @@ use Source\Domain\Vo\Name;
 use Source\Domain\Vo\PasswordHashed;
 use Source\Domain\Vo\Uuid;
 
-class User
+final readonly class User
 {
     public function __construct(
         public Uuid $id,

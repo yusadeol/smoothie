@@ -9,12 +9,15 @@ use Source\Domain\Entities\Fields\Title;
 use Source\Domain\Entities\Fields\Url;
 use Source\Domain\Entities\SubComponent\Definitions\SubComponentDefinition;
 use Source\Domain\Entities\SubComponent\Interfaces\SubComponentInterface;
+use Source\Domain\Entities\SubComponent\Traits\HasFields;
 use Source\Domain\Vo\Key;
 use Source\Domain\Vo\Label;
 use Source\Domain\Vo\Uuid;
 
 final class Image implements SubComponentInterface
 {
+    use HasFields;
+
     /**
      * @param  array<FieldInterface>  $fields
      * @param  array<SubComponentInterface>|null  $subComponents
