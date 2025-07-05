@@ -2,6 +2,7 @@
     "notPath": [
         "source/Domain/Entities/Components/Interfaces/ComponentInterface.php",
         "source/Domain/Entities/SubComponent/Interfaces/SubComponentInterface.php",
+        "source/Domain/Entities/Fields/Interfaces/FieldInterface.php",
         "source/Domain/Entities/Fields/Title.php",
         "source/Domain/Entities/Fields/Url.php"
     ]

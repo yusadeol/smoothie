@@ -8,9 +8,9 @@ use Source\Domain\ValueObjects\Uuid;
 
 interface FieldInterface
 {
-    public function __construct(
-        Uuid $id,
-        Uuid $ownerId,
-        mixed $value
-    );
+    public Uuid $id { get; set; }
+
+    public Uuid $ownerId { get; set; }
+
+    public mixed $value { get; set; }
 }

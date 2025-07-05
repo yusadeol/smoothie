@@ -15,9 +15,12 @@ use Source\Domain\ValueObjects\Uuid;
 final class Title implements FieldInterface
 {
     public function __construct(
-        public readonly Uuid $id,
-        public readonly Uuid $ownerId,
+        public Uuid $id,
+        public Uuid $ownerId,
         public mixed $value {
+            get {
+                return $this->value;
+            }
             set {
                 if (! $value instanceof TitleVo) {
                     $titleVoClass = TitleVo::class;
