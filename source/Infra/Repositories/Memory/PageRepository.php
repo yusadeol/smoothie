@@ -63,8 +63,8 @@ final readonly class PageRepository implements PageRepositoryInterface
      */
     public function getAllByUserId(Uuid $id): array|Error
     {
-        foreach ($this->pages as $pageId => $pages) {
-            if (Uuid::parse($pageId)->equals($id)) {
+        foreach ($this->pages as $userId => $pages) {
+            if (Uuid::parse($userId)->equals($id)) {
                 return $pages;
             }
         }
