@@ -1,4 +1,4 @@
-{extends file="framework/layout.tpl"}
+{extends file="layout.tpl"}
 
 {block name="content"}
     <h2>501 - Funcionalidade Não Implementada</h2>

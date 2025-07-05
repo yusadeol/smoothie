@@ -10,6 +10,6 @@ final readonly class NotFoundController extends Controller
 {
     public function __invoke(): void
     {
-        $this->smarty->display('framework/error/notFound.tpl');
+        $this->smarty->display('error/notFound.tpl');
     }
 }

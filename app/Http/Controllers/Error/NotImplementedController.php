@@ -10,6 +10,6 @@ final readonly class NotImplementedController extends Controller
 {
     public function __invoke(): void
     {
-        $this->smarty->display('framework/error/notImplemented.tpl');
+        $this->smarty->display('error/notImplemented.tpl');
     }
 }

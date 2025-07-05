@@ -1,4 +1,4 @@
-{extends file="framework/layout.tpl"}
+{extends file="layout.tpl"}
 
 {block name="content"}
     <h2>404 - Página Não Encontrada</h2>

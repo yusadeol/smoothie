@@ -10,6 +10,6 @@ final readonly class BadRequestController extends Controller
 {
     public function __invoke(): void
     {
-        $this->smarty->display('framework/error/badRequest.tpl');
+        $this->smarty->display('error/badRequest.tpl');
     }
 }

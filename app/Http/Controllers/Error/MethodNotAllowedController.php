@@ -10,6 +10,6 @@ final readonly class MethodNotAllowedController extends Controller
 {
     public function __invoke(): void
     {
-        $this->smarty->display('framework/error/methodNotAllowed.tpl');
+        $this->smarty->display('error/methodNotAllowed.tpl');
     }
 }

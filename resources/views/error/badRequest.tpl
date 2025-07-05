@@ -1,4 +1,4 @@
-{extends file="framework/layout.tpl"}
+{extends file="layout.tpl"}
 
 {block name="content"}
     <h2>400 - Requisição Inválida</h2>
