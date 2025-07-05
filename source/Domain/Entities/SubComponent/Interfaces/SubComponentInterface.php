@@ -25,5 +25,10 @@ interface SubComponentInterface
      */
     public function getField(string $fieldClass): ?FieldInterface;
 
+    /**
+     * @param class-string<FieldInterface> $fieldClass
+     */
+    public function getFieldValue(string $fieldClass): mixed;
+
     public static function getDefinition(): SubComponentDefinition;
 }
