@@ -42,6 +42,7 @@ final readonly class PageController extends Controller
             return;
         }
 
-        $this->smarty->display('framework/page.tpl');
+        $this->smarty->assign('page', $output->page);
+        $this->smarty->display('page.tpl');
     }
 }
