@@ -4,49 +4,58 @@ declare(strict_types=1);
 
 namespace Source\Infra\Repositories\Memory;
 
-use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
-use Source\Domain\Entities\Fields\Title;
-use Source\Domain\Entities\Fields\Url;
+use Source\Domain\Entities\ComponentDefinition;
+use Source\Domain\Entities\Field;
 use Source\Domain\Interfaces\Repositories\FieldRepositoryInterface;
 use Source\Domain\ValueObjects\Error;
-use Source\Domain\ValueObjects\Title as TitleVo;
-use Source\Domain\ValueObjects\Url as UrlVo;
+use Source\Domain\ValueObjects\Key;
+use Source\Domain\ValueObjects\Title;
+use Source\Domain\ValueObjects\Url;
 use Source\Domain\ValueObjects\Uuid;
 
 final readonly class FieldRepository implements FieldRepositoryInterface
 {
-    /** @var array<string, array<FieldInterface>> */
+    /** @var array<string, array<Field>> */
     private array $fields;
 
     public function __construct()
     {
-        $componentId = new Uuid('0197d891-0b0a-70a7-b2b2-a32ff67a5149');
-        $subComponentId = new Uuid('0197d892-696b-7011-83bd-b7d31ea769db');
+        /** @var ComponentDefinition $bannerDefinition */
+        $bannerDefinition = require dirname(__DIR__, 3).'/Domain/Definitions/Components/Banner.php';
+
+        /** @var ComponentDefinition $imageDefinition */
+        $imageDefinition = $bannerDefinition->getSubComponentDefinition(new Key('image'));
+
+        $bannerId = new Uuid('0197efa3-b183-7034-b9b3-c73eba6726fd');
+        $imageId = new Uuid('0197efa3-d728-722b-b9d4-114841d1550a');
 
         $this->fields = [
-            (string) $componentId => [
-                new Title(
-                    new Uuid('0197d891-a90b-7123-9146-90138a6dc228'),
-                    $componentId,
-                    new TitleVo('Apenas um título')
+            (string) $bannerId => [
+                new Field(
+                    new Uuid('0197efaf-3071-72c8-b167-6764fa88c395'),
+                    $bannerId,
+                    $bannerDefinition->getFieldDefinition(new Key('title')),
+                    new Title('Apenas um título')
                 ),
-                new Url(
-                    new Uuid('0197d891-d097-7038-9c46-a862a9cf4e6c'),
-                    $componentId,
-                    new UrlVo('https://ysocode.com')
+                new Field(
+                    new Uuid('0197efaf-4d97-726c-b668-e28067afe9ba'),
+                    $bannerId,
+                    $bannerDefinition->getFieldDefinition(new Key('link')),
+                    new Url('https://ysocode.com')
                 ),
             ],
-            (string) $subComponentId => [
-                new Url(
-                    new Uuid('0197d893-f987-7122-9988-048500229fda'),
-                    $componentId,
-                    new UrlVo('https://t4.ftcdn.net/jpg/10/93/45/23/360_F_1093452370_iSpkxn4xqCPjxnMJyRuguYhpqaQ8P0Yk.jpg')
+            (string) $imageId => [
+                new Field(
+                    new Uuid('0197efaf-616a-7163-ad09-afa76ab68de0'),
+                    $bannerId,
+                    $imageDefinition->getFieldDefinition(new Key('url')),
+                    new Url('https://images.unsplash.com/photo-1615963244664-5b845b2025ee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGlnZXJ8ZW58MHx8MHx8fDA%3D')
                 ),
             ],
         ];
     }
 
-    public function getById(Uuid $id): FieldInterface|Error
+    public function getById(Uuid $id): Field|Error
     {
         foreach ($this->fields as $fields) {
             foreach ($fields as $field) {
@@ -62,10 +71,10 @@ final readonly class FieldRepository implements FieldRepositoryInterface
     /**
      * {@inheritDoc}
      */
-    public function getAllByOwnerId(Uuid $id): array|Error
+    public function getAllByComponentId(Uuid $id): array|Error
     {
-        foreach ($this->fields as $ownerId => $fields) {
-            if (new Uuid($ownerId)->equals($id)) {
+        foreach ($this->fields as $componentId => $fields) {
+            if (new Uuid($componentId)->equals($id)) {
                 return $fields;
             }
         }
