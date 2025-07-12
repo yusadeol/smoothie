@@ -14,7 +14,7 @@ final readonly class Component
     /** @var array<string, Field> */
     private array $fields;
 
-    /** @var array<string, Component> */
+    /** @var array<string, array<Component>> */
     private array $subComponents;
 
     /**
@@ -62,14 +62,14 @@ final readonly class Component
 
     /**
      * @param  array<Component>  $subComponents
-     * @return array<string, Component>
+     * @return array<string, array<Component>>
      */
     private function filterSubComponents(array $subComponents): array
     {
         $validatedSubComponents = [];
         foreach ($subComponents as $subComponent) {
             if ($this->definition->hasSubComponentDefinition($subComponent->definition->name)) {
-                $validatedSubComponents[(string) $subComponent->definition->name] = $subComponent;
+                $validatedSubComponents[(string) $subComponent->definition->name][] = $subComponent;
             }
         }
 
@@ -78,9 +78,23 @@ final readonly class Component
 
     private function validateRequiredSubComponents(): void
     {
-        foreach (array_keys($this->definition->getSubComponentDefinitions()) as $name) {
-            if (! array_key_exists($name, $this->subComponents)) {
-                throw new DomainException("Subcomponent '{$name}' does not exist.");
+        foreach ($this->definition->getSubComponentDefinitions() as $name => $subComponentDefinition) {
+            $subComponent = $this->subComponents[$name] ?? null;
+
+            $count = is_array($subComponent) ? count($subComponent) : 0;
+            $min = $subComponentDefinition->quantityRange->min;
+            $max = $subComponentDefinition->quantityRange->max;
+
+            if ($count < $min) {
+                throw new DomainException(
+                    "Subcomponent '{$name}' requires at least {$min} instance(s), found {$count}."
+                );
+            }
+
+            if ($count > $max) {
+                throw new DomainException(
+                    "Subcomponent '{$name}' allows at most {$max} instance(s), found {$count}."
+                );
             }
         }
     }
@@ -100,22 +114,17 @@ final readonly class Component
         return array_key_exists((string) $name, $this->fields);
     }
 
-    public function getSubComponent(Key $name): Component
-    {
-        $subComponent = $this->subComponents[(string) $name] ?? null;
-        if (! $subComponent) {
-            throw new InvalidArgumentException("Subcomponent '{$name}' not found.");
-        }
-
-        return $subComponent;
-    }
-
     /**
      * @return array<Component>
      */
-    public function getSubComponents(): array
+    public function getSubComponents(Key $name): array
     {
-        return $this->subComponents;
+        $subComponent = $this->subComponents[(string) $name] ?? null;
+        if (! $subComponent) {
+            throw new InvalidArgumentException('No subcomponents found.');
+        }
+
+        return $subComponent;
     }
 
     public function hasSubComponent(Key $name): bool
