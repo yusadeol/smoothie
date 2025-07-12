@@ -1,5 +1,5 @@
-{foreach $component->subComponents as $subComponent}
-    {if $subComponent::getDefinition()->key->value === "image"}
-        {include file="subComponents/image.tpl" subComponent=$subComponent}
+{foreach $component->getSubComponents() as $subComponent}
+    {if $subComponent->definition->name->value === "image"}
+        <img src="{$subComponent->getField('url'|key)->value}" alt="">
     {/if}
 {/foreach}
