@@ -30,8 +30,8 @@ final readonly class PasswordHashed implements Stringable
     private static function validate(string $value): true|Error
     {
         $length = mb_strlen($value);
-        if ($length < 4 || $length > 255) {
-            return new Error('Password must be between 4 and 255 characters.');
+        if ($length < 3 || $length > 255) {
+            return new Error('Password must be between 3 and 255 characters.');
         }
 
         if (mb_strlen($value) < 60 || preg_match('/^\$2[ayb]\$.{56}$/', $value) !== 1) {

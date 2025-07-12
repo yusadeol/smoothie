@@ -30,8 +30,8 @@ final readonly class Label implements Stringable
     private static function validate(string $value): true|Error
     {
         $length = mb_strlen($value);
-        if ($length < 4 || $length > 255) {
-            return new Error('Label must be between 4 and 255 characters.');
+        if ($length < 3 || $length > 255) {
+            return new Error('Label must be between 3 and 255 characters.');
         }
 
         return true;

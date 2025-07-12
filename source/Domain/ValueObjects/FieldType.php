@@ -7,16 +7,18 @@ namespace Source\Domain\ValueObjects;
 use InvalidArgumentException;
 use Stringable;
 
-final readonly class Name implements Stringable
+final readonly class FieldType implements Stringable
 {
     public string $value;
 
-    public function __construct(
-        string $value
-    ) {
-        $isValid = self::validate($value);
-        if ($isValid instanceof Error) {
-            throw new InvalidArgumentException((string) $isValid);
+    /**
+     * @param  class-string  $value
+     */
+    public function __construct(string $value)
+    {
+        $validation = self::validate($value);
+        if ($validation instanceof Error) {
+            throw new InvalidArgumentException((string) $validation);
         }
 
         $this->value = $value;
@@ -29,9 +31,8 @@ final readonly class Name implements Stringable
 
     private static function validate(string $value): true|Error
     {
-        $length = mb_strlen($value);
-        if ($length < 3 || $length > 255) {
-            return new Error('Name must be between 3 and 255 characters.');
+        if (! class_exists($value)) {
+            return new Error("Class '{$value}' does not exist.");
         }
 
         return true;

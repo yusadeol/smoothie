@@ -30,8 +30,8 @@ final readonly class Slug implements Stringable
     private static function validate(string $value): true|Error
     {
         $length = mb_strlen($value);
-        if ($length < 4 || $length > 255) {
-            return new Error('Slug must be between 4 and 255 characters.');
+        if ($length < 3 || $length > 255) {
+            return new Error('Slug must be between 3 and 255 characters.');
         }
 
         if (preg_match('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', $value) !== 1) {

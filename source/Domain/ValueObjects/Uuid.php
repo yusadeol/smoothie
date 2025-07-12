@@ -30,8 +30,8 @@ final readonly class Uuid implements Stringable
     private static function validate(string $value): true|Error
     {
         $length = mb_strlen($value);
-        if ($length < 4 || $length > 255) {
-            return new Error('UUID must be between 4 and 255 characters.');
+        if ($length < 3 || $length > 255) {
+            return new Error('UUID must be between 3 and 255 characters.');
         }
 
         $pattern = '/^[0-9a-f]{8}-[0-9a-f]{4}-[1678][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
