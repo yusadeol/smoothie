@@ -21,7 +21,7 @@ final readonly class FieldRepository implements FieldRepositoryInterface
     public function __construct()
     {
         /** @var ComponentDefinition $bannerDefinition */
-        $bannerDefinition = require dirname(__DIR__, 3).'/Domain/Definitions/Components/Banner.php';
+        $bannerDefinition = require basePath('source/Domain/Definitions/Components/Banner.php');
 
         $imageDefinition = $bannerDefinition->getSubComponentDefinition(new Key('image'));
 
