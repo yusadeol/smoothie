@@ -37,6 +37,11 @@ return new ComponentDefinition(
                     new Label('URL'),
                     new FieldType(Url::class)
                 ),
+                new FieldDefinition(
+                    new Key('alt'),
+                    new Label('Descrição'),
+                    new FieldType(Title::class)
+                ),
             ]
         ),
     ]

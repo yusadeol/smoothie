@@ -46,9 +46,15 @@ final readonly class FieldRepository implements FieldRepositoryInterface
             (string) $imageId => [
                 new Field(
                     new Uuid('0197efaf-616a-7163-ad09-afa76ab68de0'),
-                    $bannerId,
+                    $imageId,
                     $imageDefinition->getFieldDefinition(new Key('url')),
                     new Url('https://images.unsplash.com/photo-1615963244664-5b845b2025ee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGlnZXJ8ZW58MHx8MHx8fDA%3D')
+                ),
+                new Field(
+                    new Uuid('0197fd06-0c39-73ed-aa33-8bebc227cbf6'),
+                    $imageId,
+                    $imageDefinition->getFieldDefinition(new Key('alt')),
+                    new Title('Apenas uma imagem')
                 ),
             ],
         ];
