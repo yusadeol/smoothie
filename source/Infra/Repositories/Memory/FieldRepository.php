@@ -23,7 +23,6 @@ final readonly class FieldRepository implements FieldRepositoryInterface
         /** @var ComponentDefinition $bannerDefinition */
         $bannerDefinition = require dirname(__DIR__, 3).'/Domain/Definitions/Components/Banner.php';
 
-        /** @var ComponentDefinition $imageDefinition */
         $imageDefinition = $bannerDefinition->getSubComponentDefinition(new Key('image'));
 
         $bannerId = new Uuid('0197efa3-b183-7034-b9b3-c73eba6726fd');

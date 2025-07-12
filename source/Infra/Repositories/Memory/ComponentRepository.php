@@ -38,7 +38,6 @@ final readonly class ComponentRepository implements ComponentRepositoryInterface
         /** @var ComponentDefinition $bannerDefinition */
         $bannerDefinition = require dirname(__DIR__, 3).'/Domain/Definitions/Components/Banner.php';
 
-        /** @var ComponentDefinition $imageDefinition */
         $imageDefinition = $bannerDefinition->getSubComponentDefinition(new Key('image'));
 
         $bannerFields = $this->fieldRepository->getAllByComponentId($bannerId);
