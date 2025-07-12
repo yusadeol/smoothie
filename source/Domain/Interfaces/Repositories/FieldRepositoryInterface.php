@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Source\Domain\Interfaces\Repositories;
 
-use Source\Domain\Entities\Fields\Interfaces\FieldInterface;
+use Source\Domain\Entities\Field;
 use Source\Domain\ValueObjects\Error;
 use Source\Domain\ValueObjects\Uuid;
 
 interface FieldRepositoryInterface
 {
-    public function getById(Uuid $id): FieldInterface|Error;
+    public function getById(Uuid $id): Field|Error;
 
     /**
-     * @return array<FieldInterface>|Error
+     * @return array<Field>|Error
      */
-    public function getAllByOwnerId(Uuid $id): array|Error;
+    public function getAllByComponentId(Uuid $id): array|Error;
 }
