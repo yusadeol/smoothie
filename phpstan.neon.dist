@@ -2,6 +2,7 @@ parameters:
 
     paths:
         - app/
+        - public/
         - routes/
         - source/
 

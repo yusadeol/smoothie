@@ -1,14 +1,19 @@
 <?php
 
-require_once __DIR__.'/vendor/autoload.php';
+declare(strict_types=1);
+
+require_once __DIR__.'/../vendor/autoload.php';
 
 use CoffeeCode\Router\Dispatch;
 use CoffeeCode\Router\Router;
 
 $router = new Router('http://localhost/smoothie');
 
-$frameworkRoutes = require_once __DIR__.'/routes/error.php';
-$webRoutes = require_once __DIR__.'/routes/web.php';
+/** @var Closure $frameworkRoutes */
+$frameworkRoutes = require_once basePath('/routes/error.php');
+
+/** @var Closure $webRoutes */
+$webRoutes = require_once basePath('/routes/web.php');
 
 $frameworkRoutes($router);
 $webRoutes($router);
