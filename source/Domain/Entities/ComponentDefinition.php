@@ -13,12 +13,12 @@ final readonly class ComponentDefinition
     /** @var array<string, FieldDefinition> */
     private array $fieldDefinitions;
 
-    /** @var array<string, ComponentDefinition> */
+    /** @var array<string, SubComponentDefinition> */
     private array $subComponentDefinitions;
 
     /**
      * @param  array<FieldDefinition>  $fieldDefinitions
-     * @param  array<ComponentDefinition>  $subComponentDefinitions
+     * @param  array<SubComponentDefinition>  $subComponentDefinitions
      */
     public function __construct(
         public Key $name,
@@ -45,8 +45,8 @@ final readonly class ComponentDefinition
     }
 
     /**
-     * @param  array<ComponentDefinition>  $subComponentDefinitions
-     * @return array<string, ComponentDefinition>
+     * @param  array<SubComponentDefinition>  $subComponentDefinitions
+     * @return array<string, SubComponentDefinition>
      */
     private function filterSubComponentDefinitions(array $subComponentDefinitions): array
     {
@@ -81,7 +81,7 @@ final readonly class ComponentDefinition
         return array_key_exists((string) $name, $this->fieldDefinitions);
     }
 
-    public function getSubComponentDefinition(Key $name): ComponentDefinition
+    public function getSubComponentDefinition(Key $name): SubComponentDefinition
     {
         $subComponentDefinitions = $this->subComponentDefinitions[(string) $name] ?? null;
         if (! $subComponentDefinitions) {
@@ -92,7 +92,7 @@ final readonly class ComponentDefinition
     }
 
     /**
-     * @return array<string, ComponentDefinition>
+     * @return array<string, SubComponentDefinition>
      */
     public function getSubComponentDefinitions(): array
     {

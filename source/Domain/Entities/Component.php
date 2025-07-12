@@ -24,7 +24,7 @@ final readonly class Component
     public function __construct(
         public Uuid $id,
         public Uuid $pageId,
-        public ComponentDefinition $definition,
+        public ComponentDefinition|SubComponentDefinition $definition,
         array $fields = [],
         array $subComponents = [],
         public ?Uuid $parentId = null
