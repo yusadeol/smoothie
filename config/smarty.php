@@ -8,5 +8,14 @@ return [
     'modifier' => [
         'key' => fn (string $key): Key => new Key($key),
     ],
-    'function' => [],
+    'function' => [
+        'asset' => function (array $params): string {
+            $path = $params['path'] ?? null;
+            if (! is_string($path) || ($path === '' || $path === '0')) {
+                throw new InvalidArgumentException('Path must be a string or null.');
+            }
+
+            return "assets/{$path}";
+        },
+    ],
 ];
